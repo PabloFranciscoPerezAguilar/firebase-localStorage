@@ -1,12 +1,54 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+<ion-content>
+  <form [formGroup]="formEncuesta">
+    <div class="div">
+      <ion-item>
+        <ion-input type="Text" formControlName="name" placeholder="Nombre">
+        </ion-input>
+        <span *ngIf="formEncuesta.get('name').touched && formEncuesta.get('name').hasError('required')">Requerido</span>
+      </ion-item>
+      <ion-item>
+        <ion-input type="Number" formControlName="age" placeholder="Edad">
+        </ion-input>
+        <span *ngIf="formEncuesta.get('age').touched && formEncuesta.get('age').hasError('required')">Requerido</span>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Sexo</ion-label>
+        <span *ngIf="formEncuesta.get('sex').touched && formEncuesta.get('sex').hasError('required')">Requerido</span>
+        <ion-select placeholder="Selecciona uno" formControlName="sex">
+          <ion-select-option value="f">Femenino</ion-select-option>
+          <ion-select-option value="m">Masculino</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Ocupación</ion-label>
+        <span *ngIf="formEncuesta.get('ocupation').touched && formEncuesta.get('ocupation').hasError('required')">Requerido</span>
+        <ion-select placeholder="Selecciona uno" formControlName="ocupation">
+          <ion-select-option value="estudiante">Estudiate</ion-select-option>
+          <ion-select-option value="trabajador">Trabajador</ion-select-option>
+          <ion-select-option value="otro">Otro</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Ciudad</ion-label>
+        <span *ngIf="formEncuesta.get('city').touched && formEncuesta.get('city').hasError('required')">Requerido</span>
+        <ion-select placeholder="Selecciona uno" formControlName="city">
+          <ion-select-option value="Tuxtla Gutiérrez​">Tuxtla Gutiérrez​</ion-select-option>
+          <ion-select-option value="Tapachula de Córdova y Ordóñez​">Tapachula de Córdova y Ordóñez​</ion-select-option>
+          <ion-select-option value="San Cristóbal de Las Casas">San Cristóbal de Las Casas</ion-select-option>
+          <ion-select-option value="Comitán de Domínguez​">Comitán de Domínguez​</ion-select-option>
+          <ion-select-option value="Palenque​">Palenque​</ion-select-option>
+          <ion-select-option value="Ocozocoautla de Espinosa">Ocozocoautla de Espinosa</ion-select-option>
+          <ion-select-option value="Villaflores​">Villaflores​</ion-select-option>
+          <ion-select-option value="Tonalá​">Tonalá</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>  
+  </form>
+  <div class = "div">
+    <ion-button id="guardar" type="button" (click)="guardar()" [disabled]="formEncuesta.invalid">Guardar</ion-button>
+  </div>
 </ion-content>

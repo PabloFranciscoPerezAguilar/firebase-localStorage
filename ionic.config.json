@@ -1,5 +1,7 @@
 {
   "name": "sincronizar",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
